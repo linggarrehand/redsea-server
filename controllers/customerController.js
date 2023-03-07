@@ -1,5 +1,5 @@
 const { comparePassword } = require("../helpers/bcrypt");
-const { Customer } = require("../models");
+const { Customer, Product } = require("../models");
 const { createToken } = require("../helpers/jwt");
 
 class customerController {
@@ -45,6 +45,34 @@ class customerController {
     }
 
       res.status(200).json({ access_token });
+    } catch (err) {
+      next(err);
+    }
+  }
+  static async getProduct(req, res, next) {
+    let { page, categoryId } = req.query;
+    let paramsQuery = {};
+    const limit = 6;
+    const offset = page ? page * limit : 0;
+    paramsQuery.limit = limit;
+    paramsQuery.offset = offset;
+    paramsQuery.attributes = { exclude: ["createdAt", "updatedAt"] };
+    if (categoryId) {
+      paramsQuery.where = { categoryId };
+    }
+    try {
+      let product = await Product.findAll(paramsQuery);
+      res.status(200).json(product);
+    } catch (err) {
+      next(err);
+    }
+  }
+  static async getProductById(req, res, next) {
+    try {
+      let {id} = req.params;
+      let product = await Product.findByPk(id);
+      if (!product) throw { name: "NotFound" };
+      res.status(200).json(product);
     } catch (err) {
       next(err);
     }
