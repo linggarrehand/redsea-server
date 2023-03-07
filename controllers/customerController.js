@@ -40,10 +40,6 @@ class customerController {
       };
       const access_token = createToken(payload);
 
-      req.customer = {
-        id : findCustomer.id,
-    }
-
       res.status(200).json({ access_token });
     } catch (err) {
       next(err);
