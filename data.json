@@ -1,0 +1,65 @@
+{
+    "Customers": [
+      {
+        "email": "a@mail.com",
+        "password": "a",
+        "phoneNumber": "08123789456"
+      },
+      {
+        "email": "b@mail.com",
+        "password": "b",
+        "phoneNumber": "08123456798"
+      }
+    ],
+    "Categories": [
+      {
+        "name": "CONSUMPTION MATERIAL"
+      },
+      {
+        "name": "CAPITAl MATERIAL"
+      },
+      {
+        "name": "RAW MATERIAl"
+      }
+    ],
+    "Products": [
+      {
+        "name": "Shrimp",
+        "destination": "Japan",
+        "price": 10,
+        "requested": 3000,
+        "imgUrl": "https://indonesiaseafood.id/assets/images/produk/crustacea_indonesiaseafood_20211015103245.png",
+        "categoryId": 1,
+        "customerId": 1
+      },
+      {
+        "name": "Coffee",
+        "destination": "Brazil",
+        "price": 5,
+        "requested": 2000,
+        "imgUrl": "https://cdn1-production-images-kly.akamaized.net/jCS7CMOQDnkzuOWy7kTygppp3rU=/640x360/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/4232694/original/056977200_1668934708-background-roasted-fresh-brown-coffee-beans-perfect-cool-wallpaper.jpg",
+        "categoryId": 1,
+        "customerId": 1
+      },
+      {
+        "name": "Natural Rubber",
+        "destination": "Australia",
+        "price": 2,
+        "requested": 5000,
+        "imgUrl": "https://static.wixstatic.com/media/6b869b_92953826ac8d43bab2e9a49a3f80a071.jpg/v1/fit/w_2500,h_1330,al_c/6b869b_92953826ac8d43bab2e9a49a3f80a071.jpg",
+        "categoryId": 3,
+        "customerId": 1
+      },
+      {
+        "name": "Motherboard",
+        "destination": "Russia",
+        "price": 20,
+        "requested": 1000,
+        "imgUrl": "https://opengovasia.com/wp-content/uploads/2022/02/Article_Samaya_February-4.jpg",
+        "categoryId": 2,
+        "customerId": 2
+      }
+  
+    ]
+  }
+  
