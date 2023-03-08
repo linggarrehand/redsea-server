@@ -13,6 +13,7 @@ async function authentication (req, res, next) {
         req.customer = {
             id : customer.id,
             email : customer.email,
+            subscribe : customer.isSubscribed
         }
         next ()
     } catch (err) {
