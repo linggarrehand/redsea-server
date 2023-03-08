@@ -108,11 +108,11 @@ class customerController {
   }
   static async changeSubscription(req, res, next) {
     try {
-      await User.update(
+      await Customer.update(
         { isSubscribed: true },
         {
           where: {
-            id: req.user.id,
+            id: req.customer.id,
           },
         }
       );
