@@ -150,6 +150,13 @@ class customerController {
       next(err);
     }
   }
+  static async detailProfile (req, res, next) {
+    try {
+      res.status(200).json(req.customer)
+    } catch (err) {
+      next(err)   
+    }
+  }
 }
 
 module.exports = customerController;
