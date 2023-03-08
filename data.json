@@ -58,8 +58,52 @@
         "imgUrl": "https://opengovasia.com/wp-content/uploads/2022/02/Article_Samaya_February-4.jpg",
         "categoryId": 2,
         "customerId": 2
+      },
+      {
+        "name": "Cacao",
+        "destination": "Thailand",
+        "price": 10,
+        "requested": 2000,
+        "imgUrl": "https://www.spicejungle.com/wp/files/2021/05/Nacional-Cacao.jpg",
+        "categoryId": 1,
+        "customerId": 1
+      },
+      {
+        "name": "Palm Oil",
+        "destination": "Germany",
+        "price": 7,
+        "requested": 5000,
+        "imgUrl": "https://www.smart-tbk.com/wp-content/uploads/2022/03/palm-oil.jpg",
+        "categoryId": 1,
+        "customerId": 1
+      },
+      {
+        "name": "Woods",
+        "destination": "Spain",
+        "price": 11,
+        "requested": 2000,
+        "imgUrl": "https://woodexport.biz/images/gallery1/6.jpg",
+        "categoryId": 3,
+        "customerId": 1
+      },
+      {
+        "name": "Steel",
+        "destination": "Egypt",
+        "price": 15,
+        "requested": 10000,
+        "imgUrl": "https://photos.idnfinancials.com/d/1600x900/Big%20Stock/bigstock-Steel-Bars-957675.jpg&nc",
+        "categoryId": 3,
+        "customerId": 1
+      },
+      {
+        "name": "Coal",
+        "destination": "France",
+        "price": 20,
+        "requested": 15000,
+        "imgUrl": "https://www.jac-outsourcing.co.id/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNDZhSEE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--ea1a935d7c3fe52a31d04e67bcae21fdc42e22ee/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9VWTI5dFltbHVaVjl2Y0hScGIyNXpld2c2QzNKbGMybDZaVWtpRFRnd01IZ3pOVEJlQmpvR1JWUTZER2R5WVhacGRIbEpJZ3REWlc1MFpYSUdPd2RVT2dsamNtOXdTU0lRT0RBd2VETTFNQ3N3S3pBR093ZFUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--0f2c995184388964a2b99747865e8042294f6a77/heap-coal-as-background-top-view.jpg",
+        "categoryId": 3,
+        "customerId": 1
       }
-  
     ]
   }
   

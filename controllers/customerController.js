@@ -1,5 +1,5 @@
 const { comparePassword } = require("../helpers/bcrypt");
-const { Customer, Product } = require("../models");
+const { Customer, Product, Category } = require("../models");
 const { createToken } = require("../helpers/jwt");
 
 class customerController {
@@ -73,6 +73,14 @@ class customerController {
       next(err);
     }
   }
+  static async getCategory (req, res, next) {
+    try {
+        let category = await Category.findAll()
+        res.status(200).json(category)
+    } catch (err) {
+        next (err)  
+    }
+}
  
 }
 
