@@ -30,6 +30,14 @@ module.exports = (err, req, res, next) => {
       status = 404;
       message = "Product not found";
       break;
+    case "already_subscribed":
+      status = 400;
+      message = "You already subscribed";
+      break;
+    case "MidtransError":
+      status = 400;
+      message = err.ApiResponse.error_messages[0];
+      break;
     default:
       break;
   }

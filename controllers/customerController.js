@@ -2,6 +2,7 @@ const { comparePassword } = require("../helpers/bcrypt");
 const { Customer, Product, Category } = require("../models");
 const { createToken } = require("../helpers/jwt");
 const axios = require("axios");
+const midtransClient = require('midtrans-client');
 
 class customerController {
   static async register(req, res, next) {
@@ -90,10 +91,61 @@ class customerController {
   static async getCurrency(req, res, next) {
     try {
       let amount = req.headers.amount;
-      let { data } = await axios.request({
-        url: `https://www.amdoren.com/api/currency.php?api_key=${process.env.CURRENCY_API}&from=USD&to=IDR&amount=${amount}`,
-      });
+      const apikey = process.env.CURRENCY_API;
+      const requestOptions = {
+        url: `https://api.apilayer.com/exchangerates_data/convert?to=IDR&from=USD&amount=${amount}`,
+        method: "GET",
+        redirect: "follow",
+        headers: {
+          apikey,
+        },
+      };
+      const { data } = await axios.request(requestOptions);
       res.status(200).json(data);
+    } catch (err) {
+      next(err);
+    }
+  }
+  static async changeSubscription(req, res, next) {
+    try {
+      await User.update(
+        { isSubscribed: true },
+        {
+          where: {
+            id: req.user.id,
+          },
+        }
+      );
+      res.status(200).json("Customer is now a subscriber");
+    } catch (err) {
+      next(err);
+    }
+  }
+  static async midtransToken(req, res, next) {
+    try {
+      const findCustomer = await Customer.findByPk(req.customer.id);
+      if (findCustomer.isSubscribed) {
+        throw { name: "already_subscribed" };
+      }
+      let snap = new midtransClient.Snap({
+        isProduction: false,
+        serverKey: process.env.MIDTRANS_SERVER_KEY,
+      });
+      let parameter = {
+        transaction_details: {
+          order_id:
+            "TRANSACTION_" + Math.floor(100000 + Math.random() * 9000000),
+          gross_amount: 1500000,
+        },
+        credit_card: {
+          secure: true,
+        },
+        customer_details: {
+          email: findCustomer.email,
+        },
+      };
+      const midtransToken = await snap.createTransaction(parameter)
+      res.status(201).json(midtransToken)
     } catch (err) {
       next(err);
     }
