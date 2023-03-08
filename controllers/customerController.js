@@ -1,6 +1,7 @@
 const { comparePassword } = require("../helpers/bcrypt");
 const { Customer, Product, Category } = require("../models");
 const { createToken } = require("../helpers/jwt");
+const axios = require("axios");
 
 class customerController {
   static async register(req, res, next) {
@@ -11,7 +12,9 @@ class customerController {
         password,
         phoneNumber,
       });
-      res.status(201).json({ id: createCustomer.id, email: createCustomer.email });
+      res
+        .status(201)
+        .json({ id: createCustomer.id, email: createCustomer.email });
     } catch (err) {
       next(err);
     }
@@ -31,7 +34,10 @@ class customerController {
 
       if (!findCustomer) throw { name: "invalid_email_password" };
 
-      const passwordValidated = comparePassword(password, findCustomer.password);
+      const passwordValidated = comparePassword(
+        password,
+        findCustomer.password
+      );
 
       if (!passwordValidated) throw { name: "invalid_email_password" };
 
@@ -65,7 +71,7 @@ class customerController {
   }
   static async getProductById(req, res, next) {
     try {
-      let {id} = req.params;
+      let { id } = req.params;
       let product = await Product.findByPk(id);
       if (!product) throw { name: "NotFound" };
       res.status(200).json(product);
@@ -73,15 +79,25 @@ class customerController {
       next(err);
     }
   }
-  static async getCategory (req, res, next) {
+  static async getCategory(req, res, next) {
     try {
-        let category = await Category.findAll()
-        res.status(200).json(category)
+      let category = await Category.findAll();
+      res.status(200).json(category);
     } catch (err) {
-        next (err)  
+      next(err);
     }
-}
- 
+  }
+  static async getCurrency(req, res, next) {
+    try {
+      let amount = req.headers.amount;
+      let { data } = await axios.request({
+        url: `https://www.amdoren.com/api/currency.php?api_key=${process.env.CURRENCY_API}&from=USD&to=IDR&amount=${amount}`,
+      });
+      res.status(200).json(data);
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 
 module.exports = customerController;
