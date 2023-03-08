@@ -3,12 +3,14 @@
       {
         "email": "a@mail.com",
         "password": "a",
-        "phoneNumber": "08123789456"
+        "phoneNumber": "08123789456",
+        "isSubscribed": false
       },
       {
         "email": "b@mail.com",
         "password": "b",
-        "phoneNumber": "08123456798"
+        "phoneNumber": "08123456798",
+        "isSubscribed": false
       }
     ],
     "Categories": [

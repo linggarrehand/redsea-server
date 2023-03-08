@@ -65,12 +65,14 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
+    isSubscribed: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Customer',
   });
   Customer.beforeCreate ((customer, options) => {
     customer.password = hashPassword (customer.password)
+    customer.isSubscribed = false
   })
   return Customer;
 };
