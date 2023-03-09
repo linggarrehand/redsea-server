@@ -116,7 +116,7 @@ class customerController {
           },
         }
       );
-      res.status(200).json("Customer is now a subscriber");
+      res.status(200).json({ message: "Customer is now a subscriber"});
     } catch (err) {
       next(err);
     }
